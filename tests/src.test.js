@@ -1,8 +1,10 @@
 const test = require('tape');
 const supertest = require('supertest');
+const getWeekStartDate = require('../src/logic/getWeekStartDate');
 const app = require('../app');
-const nock = require('nock');
 const rp = require('request-promise-native');
+const nock = require('nock');
+const dummyData = require('./dummy-data.json');
 
 // Does tape work?
 test('1 equals 1', (t) => {
@@ -22,10 +24,20 @@ test('check if supertest works', (t) => {
     });
 });
 
-// GitHub API call returns json
+// Function takes a date, and returns the date of the last Monday, formatted
+// in a YYYY-MM-DD capacity
+test('getWeekStartDate function', (t) => {
+  const actual = getWeekStartDate(1508664769957);
+  const expected = '2017-10-16';
+  t.same(actual, expected, 'Passing in UTC timestamp returns formatted date of the last Monday');
+  t.end();
+});
+
+// GitHub API call returns successfully
 test('GitHub API returns JSON', (t) => {
+  const weekStart = getWeekStartDate(Date.now());
   const options = {
-    uri: 'https://api.github.com/search/repositories?q=created:%3E2017-01-10&',
+    uri: `https://api.github.com/search/repositories?q=created:%3E${weekStart}&`,
     qs: {
       sort: 'stars',
       order: 'desc',
@@ -42,9 +54,14 @@ test('GitHub API returns JSON', (t) => {
         name, description, url, stargazers_count,
       } = response.items[0];
       t.pass('GitHub has returned data successfully');
+
+      if (description === null) {
+        t.pass('Response returning an empty description (null)');
+      } else {
+        t.same(typeof description, 'string' || null, 'Response returning description in correct format');
+      }
       t.same(typeof response, 'object', 'Response is an object');
       t.same(typeof name, 'string', 'Response returning name in correct format');
-      t.same(typeof description, 'string', 'Response returning description in correct format');
       t.same(typeof url, 'string', 'Response returning url in correct format');
       t.same(typeof stargazers_count, 'number', 'Response returning stargazers_count in correct format');
     }).catch((err) => {
@@ -52,3 +69,5 @@ test('GitHub API returns JSON', (t) => {
     });
   t.end();
 });
+
+// Function pulls out relevant information from GitHub and returns an array of objects
