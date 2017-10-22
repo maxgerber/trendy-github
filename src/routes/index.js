@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const dummyData = require('../../tests/dummy-data.json');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const router = express.Router();
+
+const home = require('./home');
+
+router.get('/', home.get);
 
 module.exports = router;

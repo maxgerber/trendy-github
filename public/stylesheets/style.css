@@ -1,8 +1,25 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: charcoalgray;
+  font-family: sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.main {
+  width: 90vw;
+  margin: auto;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.repos {
+  width: calc(40rem + 2vw);
+  height: calc(15rem + 2vw);
+  border: 2px white solid;
+  padding: 1rem;
+  margin: 2rem;
+  text-align: center;
 }
