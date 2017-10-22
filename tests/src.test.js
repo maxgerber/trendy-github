@@ -12,10 +12,14 @@ test('1 equals 1', (t) => {
 
 // Does supertest work?
 test('check if supertest works', (t) => {
-  supertest(app).get('/').expect(200).expect('Content-Type', /html/).end((err, res) => {
-    t.same(res.statusCode, 200, 'Status code is 200');
-    t.end();
-  });
+  supertest(app)
+    .get('/')
+    .expect(200)
+    .expect('Content-Type', /html/)
+    .end((err, res) => {
+      t.same(res.statusCode, 200, 'Status code is 200');
+      t.end();
+    });
 });
 
 // GitHub API call returns json
@@ -34,9 +38,15 @@ test('GitHub API returns JSON', (t) => {
 
   rp(options)
     .then((response) => {
+      const {
+        name, description, url, stargazers_count,
+      } = response.items[0];
       t.pass('GitHub has returned data successfully');
-      console.log(typeof response);
       t.same(typeof response, 'object', 'Response is an object');
+      t.same(typeof name, 'string', 'Response returning name in correct format');
+      t.same(typeof description, 'string', 'Response returning description in correct format');
+      t.same(typeof url, 'string', 'Response returning url in correct format');
+      t.same(typeof stargazers_count, 'number', 'Response returning stargazers_count in correct format');
     }).catch((err) => {
       t.fail(`GitHub API has returned an error message: \n ${err}`);
     });
