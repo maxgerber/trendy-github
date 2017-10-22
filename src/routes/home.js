@@ -17,10 +17,10 @@ exports.get = (req, res) => {
     json: true,
   };
 
-  // rp(options)
-  //   .then((response) => {
-  //     console.log(response);
-  const gitHubData = formatGitHubData(dummyData, 10);
-  res.render('home', { repos: 'dummyq' });
-  // });
+  rp(options)
+    .then((response) => {
+      console.log(response);
+  const gitHubData = formatGitHubData(response, 10);
+  res.render('home', { repos: gitHubData });
+  });
 };

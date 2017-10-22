@@ -1,3 +1,8 @@
-<!-- {{#each repos}}
-<h1>{{this.name}}</h1> -->
-<h1>HEY</h1>
+{{#each repos}}
+  <section class="repos" id= {{this.name}}>
+    <h1>{{this.name}}</h1>
+    <h2>{{this.description}}</h2>
+    <h3>{{this.stargazers_count}}</h3>
+    <h4>{{this.language}}</h4>
+  </section>
+{{/each}}
