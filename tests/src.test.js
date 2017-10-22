@@ -1,9 +1,10 @@
 const test = require('tape');
 const supertest = require('supertest');
 const getWeekStartDate = require('../src/logic/getWeekStartDate');
+const formatGitHubData = require('../src/logic/formatGitHubData');
 const app = require('../app');
 const rp = require('request-promise-native');
-const nock = require('nock');
+// const nock = require('nock');
 const dummyData = require('./dummy-data.json');
 
 // Does tape work?
@@ -51,7 +52,7 @@ test('GitHub API returns JSON', (t) => {
   rp(options)
     .then((response) => {
       const {
-        name, description, url, stargazers_count,
+        name, description, url, stargazers_count, language,
       } = response.items[0];
       t.pass('GitHub has returned data successfully');
 
@@ -64,6 +65,7 @@ test('GitHub API returns JSON', (t) => {
       t.same(typeof name, 'string', 'Response returning name in correct format');
       t.same(typeof url, 'string', 'Response returning url in correct format');
       t.same(typeof stargazers_count, 'number', 'Response returning stargazers_count in correct format');
+      t.same(typeof language, 'string', 'Response returning language in correct format');
     }).catch((err) => {
       t.fail(`GitHub API has returned an error message: \n ${err}`);
     });
@@ -71,3 +73,37 @@ test('GitHub API returns JSON', (t) => {
 });
 
 // Function pulls out relevant information from GitHub and returns an array of objects
+
+test('formatGitHubData function', (t) => {
+  const actual = formatGitHubData(dummyData, 5);
+  const expected = [{
+    name: 'avbook',
+    description: 'Illegal vehicle from Red Castle',
+    url: 'https://api.github.com/repos/guyueyingmu/avbook',
+    stargazers_count: 134,
+    language: 'PHP',
+  },
+  {
+    name: 'BrowserGather',
+    description: 'Fileless web browser information extraction',
+    url: 'https://api.github.com/repos/sekirkity/BrowserGather',
+    stargazers_count: 126,
+    language: 'PowerShell',
+  },
+  {
+    name: 'hyperbitbit',
+    description: 'HyperBitBit',
+    url: 'https://api.github.com/repos/seiflotfy/hyperbitbit',
+    stargazers_count: 125,
+    language: 'Go',
+  },
+  {
+    name: 'go-sumtype',
+    description: 'A simple utility for running exhaustiveness checks on Go "sum types."',
+    url: 'https://api.github.com/repos/BurntSushi/go-sumtype',
+    stargazers_count: 119,
+    language: 'Go',
+  }];
+  t.same(actual, expected, 'Function takes a JSON and outputs an array of objects of relevant information');
+  t.end();
+});
