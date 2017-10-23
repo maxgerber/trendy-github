@@ -1,8 +1,16 @@
+{{> header}}
 {{#each repos}}
-  <section class="repos" id= {{this.name}}>
-    <h1>{{this.name}}</h1>
-    <h2>{{this.description}}</h2>
-    <h3>{{this.stargazers_count}}</h3>
-    <h4>{{this.language}}</h4>
+  <section class="repos" id={{this.name}}>
+    <section class="repose__left">
+      <i alt={{this.language}} class="language devicon-{{{lowercaseNoSpace this.language}}}-plain"></i>
+    </section>
+    <section class="repos__middle">
+      <h1>{{this.name}}</h1>
+      <h2>{{this.description}}</h2>
+    </section>
+    <section class="repos__right">
+      <span class="star-icon">&#x2B50</span>
+      <h3 class="star-count">{{this.stargazers_count}}</h3>
+    </section>
   </section>
 {{/each}}
