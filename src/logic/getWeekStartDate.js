@@ -5,7 +5,7 @@ module.exports = (date) => {
   let daysToSubtract;
   switch (day) {
     case 'Monday':
-      daysToSubtract = 0;
+      daysToSubtract = 7;
       break;
     case 'Tuesday':
       daysToSubtract = 1;

@@ -4,7 +4,6 @@ const getWeekStartDate = require('../src/logic/getWeekStartDate');
 const formatGitHubData = require('../src/logic/formatGitHubData');
 const app = require('../app');
 const rp = require('request-promise-native');
-// const nock = require('nock');
 const dummyData = require('./dummy-data.json');
 
 // Does tape work?
@@ -76,6 +75,7 @@ test('GitHub API returns JSON', (t) => {
 
 test('formatGitHubData function', (t) => {
   const actual = formatGitHubData(dummyData, 5);
+  console.log(actual);
   const expected = [{
     name: 'avbook',
     description: 'Illegal vehicle from Red Castle',

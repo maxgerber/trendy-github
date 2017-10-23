@@ -5,6 +5,7 @@ const dummyData = require('../../tests/dummy-data.json');
 
 exports.get = (req, res) => {
   const weekStart = getWeekStartDate(Date.now());
+  console.log('WEEKSTART: ', weekStart);
   const options = {
     uri: `https://api.github.com/search/repositories?q=created:%3E${weekStart}&`,
     qs: {
@@ -19,8 +20,7 @@ exports.get = (req, res) => {
 
   rp(options)
     .then((response) => {
-      console.log(response);
-  const gitHubData = formatGitHubData(response, 10);
-  res.render('home', { repos: gitHubData });
-  });
+      const gitHubData = formatGitHubData(dummyData, 10);
+      res.render('home', { repos: gitHubData });
+    });
 };
