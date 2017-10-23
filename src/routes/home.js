@@ -20,7 +20,7 @@ exports.get = (req, res) => {
 
   rp(options)
     .then((response) => {
-      const gitHubData = formatGitHubData(dummyData, 10);
+      const gitHubData = formatGitHubData(response, 10);
       res.render('home', { repos: gitHubData });
     });
 };
