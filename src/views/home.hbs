@@ -1,6 +1,7 @@
 {{> header}}
 {{#each repos}}
-  <section class="repos" id={{this.name}}>
+<a href={{this.html_url}} alt={{this.name}} target="_blank" class="repos__link">
+  <button class="repos" id={{this.name}}>
     <section class="repose__left">
       <i alt={{this.language}} class="language devicon-{{{lowercaseNoSpace this.language}}}-plain"></i>
     </section>
@@ -12,5 +13,6 @@
       <span class="star-icon">&#x2B50</span>
       <h3 class="star-count">{{this.stargazers_count}}</h3>
     </section>
-  </section>
+  </button>
+</a>
 {{/each}}
