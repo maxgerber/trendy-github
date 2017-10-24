@@ -8,7 +8,7 @@ module.exports = (date) => {
       daysToSubtract = 7;
       break;
     case 'Tuesday':
-      daysToSubtract = 1;
+      daysToSubtract = 8;
       break;
     case 'Wednesday':
       daysToSubtract = 2;

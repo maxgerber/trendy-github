@@ -3,10 +3,10 @@ module.exports = (json, listLength) => {
 
   return repos.map((repo) => {
     const {
-      name, description, url, stargazers_count, language,
+      name, description, html_url, stargazers_count, language,
     } = repo;
     return {
-      name, description, url, stargazers_count, language,
+      name, description, html_url, stargazers_count, language,
     };
   });
 };

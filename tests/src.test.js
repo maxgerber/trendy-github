@@ -62,7 +62,7 @@ test('GitHub API returns JSON', (t) => {
       }
       t.same(typeof response, 'object', 'Response is an object');
       t.same(typeof name, 'string', 'Response returning name in correct format');
-      t.same(typeof url, 'string', 'Response returning url in correct format');
+      t.same(typeof html_url, 'string', 'Response returning html_url in correct format');
       t.same(typeof stargazers_count, 'number', 'Response returning stargazers_count in correct format');
       t.same(typeof language, 'string', 'Response returning language in correct format');
     }).catch((err) => {
@@ -79,28 +79,28 @@ test('formatGitHubData function', (t) => {
   const expected = [{
     name: 'avbook',
     description: 'Illegal vehicle from Red Castle',
-    url: 'https://api.github.com/repos/guyueyingmu/avbook',
+    html_url: 'https://api.github.com/repos/guyueyingmu/avbook',
     stargazers_count: 134,
     language: 'PHP',
   },
   {
     name: 'BrowserGather',
     description: 'Fileless web browser information extraction',
-    url: 'https://api.github.com/repos/sekirkity/BrowserGather',
+    html_url: 'https://api.github.com/repos/sekirkity/BrowserGather',
     stargazers_count: 126,
     language: 'PowerShell',
   },
   {
     name: 'hyperbitbit',
     description: 'HyperBitBit',
-    url: 'https://api.github.com/repos/seiflotfy/hyperbitbit',
+    html_url: 'https://api.github.com/repos/seiflotfy/hyperbitbit',
     stargazers_count: 125,
     language: 'Go',
   },
   {
     name: 'go-sumtype',
     description: 'A simple utility for running exhaustiveness checks on Go "sum types."',
-    url: 'https://api.github.com/repos/BurntSushi/go-sumtype',
+    html_url: 'https://api.github.com/repos/BurntSushi/go-sumtype',
     stargazers_count: 119,
     language: 'Go',
   }];
