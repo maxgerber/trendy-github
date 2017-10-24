@@ -1,5 +1,7 @@
 const moment = require('moment');
 
+// Two days appears to be the minimum that we can get back data for
+
 module.exports = (date) => {
   const day = moment(date).format('dddd');
   let daysToSubtract;

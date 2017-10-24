@@ -27,6 +27,16 @@ body {
   max-width: 800px;
 }
 
+.header__logo-text {
+  margin: 0;
+}
+
+.repos__link {
+  width: 95%;
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .repos {
   width: 95%;
   background-color: white;
@@ -41,18 +51,14 @@ body {
   margin: 3%;
 }
 
-.repos__link {
-    width: 95%;
-    color: inherit;
-    text-decoration: inherit;
-}
-
-.header__logo-text {
-  margin: 0;
-}
-
 .repos__left {
   width: 10%;
+}
+
+.language {
+  font-size: 2rem;
+  color: navy;
+  padding-right: 1rem;
 }
 
 .repos__middle {
@@ -68,13 +74,6 @@ body {
   flex-direction: column;
 }
 
-.language {
-  font-size: 2rem;
-  color: navy;
-  padding-right: 1rem;
-}
-
 .star-count {
   margin: 0.5rem 0;
-
 }

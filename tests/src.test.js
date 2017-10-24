@@ -51,7 +51,7 @@ test('GitHub API returns JSON', (t) => {
   rp(options)
     .then((response) => {
       const {
-        name, description, url, stargazers_count, language,
+        name, description, html_url, stargazers_count, language,
       } = response.items[0];
       t.pass('GitHub has returned data successfully');
 
@@ -75,32 +75,31 @@ test('GitHub API returns JSON', (t) => {
 
 test('formatGitHubData function', (t) => {
   const actual = formatGitHubData(dummyData, 5);
-  console.log(actual);
   const expected = [{
     name: 'avbook',
     description: 'Illegal vehicle from Red Castle',
-    html_url: 'https://api.github.com/repos/guyueyingmu/avbook',
+    html_url: 'https://github.com/guyueyingmu/avbook',
     stargazers_count: 134,
     language: 'PHP',
   },
   {
     name: 'BrowserGather',
     description: 'Fileless web browser information extraction',
-    html_url: 'https://api.github.com/repos/sekirkity/BrowserGather',
+    html_url: 'https://github.com/sekirkity/BrowserGather',
     stargazers_count: 126,
     language: 'PowerShell',
   },
   {
     name: 'hyperbitbit',
     description: 'HyperBitBit',
-    html_url: 'https://api.github.com/repos/seiflotfy/hyperbitbit',
+    html_url: 'https://github.com/seiflotfy/hyperbitbit',
     stargazers_count: 125,
     language: 'Go',
   },
   {
     name: 'go-sumtype',
     description: 'A simple utility for running exhaustiveness checks on Go "sum types."',
-    html_url: 'https://api.github.com/repos/BurntSushi/go-sumtype',
+    html_url: 'https://github.com/BurntSushi/go-sumtype',
     stargazers_count: 119,
     language: 'Go',
   }];
