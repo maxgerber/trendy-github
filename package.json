@@ -18,7 +18,7 @@
     "istanbul": "^0.4.5",
     "moment": "^2.19.1",
     "morgan": "^1.8.2",
-    "nock": "^9.0.24",
+    "nock": "^11.9.0",
     "nodemon": "^1.12.1",
     "normalize.css": "^7.0.0",
     "request": "^2.83.0",
