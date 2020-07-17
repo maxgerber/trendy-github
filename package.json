@@ -21,7 +21,7 @@
     "nock": "^9.0.24",
     "nodemon": "^1.12.1",
     "normalize.css": "^7.0.0",
-    "request": "^2.83.0",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "serve-favicon": "^2.4.5",
     "shot": "^4.0.2",
