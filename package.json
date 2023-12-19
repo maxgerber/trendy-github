@@ -21,11 +21,11 @@
     "nock": "^9.0.24",
     "nodemon": "^1.12.1",
     "normalize.css": "^7.0.0",
-    "request": "^2.83.0",
+    "request": "^2.87.0",
     "request-promise-native": "^1.0.5",
     "serve-favicon": "^2.4.5",
     "shot": "^4.0.2",
-    "supertest": "^3.0.0",
+    "supertest": "^6.2.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0",
     "travis": "^0.1.1"
